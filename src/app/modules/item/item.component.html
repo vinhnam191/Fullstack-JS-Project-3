@@ -1,1 +1,17 @@
-<p>item works!</p>
+<div *ngIf="item" class="item">
+  <div (click)="goToItemDetail(item.id)" class="item-img">
+    <img src="{{ item.url }}" alt="item-image" />
+  </div>
+  <div class="item-info">
+    <p>{{ item.name }}</p>
+    <p>${{ item.price }}</p>
+    <div class="item-info-input">
+      <select name="" id="">
+        <option *ngFor="let option of optionArr" value="{{ option }}">
+          {{ option }}
+        </option>
+      </select>
+      <button>Add to cart</button>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@
   color: #f2f4ef;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 }
 
 #header-title {

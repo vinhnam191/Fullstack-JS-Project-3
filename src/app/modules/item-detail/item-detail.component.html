@@ -1,1 +1,22 @@
-<p>item-detail works!</p>
+<ng-container *ngIf="itemDetail">
+  <section class="item-wrap">
+    <img src="{{ itemDetail.url }}" alt="" />
+    <div class="item-detail">
+      <h1>{{ itemDetail.name }}</h1>
+      <p>${{ itemDetail.price }}</p>
+      <p>{{ itemDetail.description }}</p>
+      <div class="item-info-input">
+        <select name="" id="">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button>Add to cart</button>
+      </div>
+      <a routerLink="">← Back to product list</a>
+    </div>
+  </section>
+</ng-container>

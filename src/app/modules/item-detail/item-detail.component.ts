@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/models';
 import { CommonService } from 'src/app/services/commom.service';
@@ -10,24 +10,26 @@ import { CommonService } from 'src/app/services/commom.service';
   styleUrls: ['./item-detail.component.css'],
 })
 export class ItemDetailComponent implements OnInit {
+  itemDetailForm = new FormGroup({
+    quantity: new FormControl(1, {
+      nonNullable: true,
+    }),
+  });
   subscription!: Subscription;
   itemDetail!: Item;
-  id!: number;
+  optionArr = ['1', '2', '3', '4', '5'];
 
-  constructor(
-    private readonly commonService: CommonService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private readonly commonService: CommonService) {}
 
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.itemDetail = this.commonService.getItemDetail();
+  }
 
-    this.commonService.getItemList().subscribe(res => {
-      res.forEach(item => {
-        if (item.id === this.id) {
-          this.itemDetail = item;
-        }
-      });
+  onAddToCart() {
+    this.commonService.addItemToCart({
+      ...this.itemDetail,
+      quantity: Number(this.itemDetailForm.controls.quantity.value),
     });
+    window.alert(`${this.itemDetail.name} added to cart successfully`);
   }
 }

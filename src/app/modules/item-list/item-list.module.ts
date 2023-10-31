@@ -15,7 +15,6 @@ import { BrowserModule } from '@angular/platform-browser';
     ReactiveFormsModule,
     ItemModule,
   ],
-  providers: [],
   exports: [ItemListComponent],
 })
 export class ItemListModule {}

@@ -1,17 +1,20 @@
 <div *ngIf="item" class="item">
-  <div (click)="goToItemDetail(item.id)" class="item-img">
+  <div (click)="goToItemDetail(item)" class="item-img">
     <img src="{{ item.url }}" alt="item-image" />
   </div>
   <div class="item-info">
     <p>{{ item.name }}</p>
     <p>${{ item.price }}</p>
     <div class="item-info-input">
-      <select name="" id="">
-        <option *ngFor="let option of optionArr" value="{{ option }}">
-          {{ option }}
-        </option>
-      </select>
-      <button>Add to cart</button>
+      <form [formGroup]="itemForm">
+        <select formControlName="quantity">
+          <option *ngFor="let option of optionArr" value="{{ option }}">
+            {{ option }}
+          </option>
+        </select>
+      </form>
+
+      <button (click)="onAddToCart()">Add to cart</button>
     </div>
   </div>
 </div>

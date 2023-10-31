@@ -26,7 +26,7 @@
   font-size: 20px;
 }
 
-.item-info > p {
+.item-info p {
   margin: 8px;
 }
 
@@ -36,12 +36,13 @@
   display: flex;
 }
 
-.item-info-input > select {
+.item-info-input select {
   padding: 10px 15px;
   margin-bottom: 8px;
   font-size: 16px;
   border-radius: 4px;
   border: 1px solid lightgray;
+  width: 120px;
 }
 
 .item-info-input option {
@@ -49,7 +50,8 @@
   color: white;
 }
 
-.item-info-input > button {
+.item-info-input button {
+  cursor: pointer;
   padding: 10px 15px;
   margin-bottom: 8px;
   font-size: 16px;

@@ -27,6 +27,11 @@
   color: #33b5e5;
   font-size: 20px;
   font-weight: bolder;
+  text-decoration: none;
+}
+
+.item-detail > a:hover {
+  text-decoration: underline;
 }
 
 .item-info-input {
@@ -36,7 +41,7 @@
   margin-bottom: 20px;
 }
 
-.item-info-input > select {
+.item-info-input select {
   padding: 10px 15px;
   margin-bottom: 8px;
   font-size: 16px;
@@ -51,6 +56,7 @@
 
 .item-info-input > button {
   padding: 10px 15px;
+  cursor: pointer;
   margin-bottom: 8px;
   font-size: 16px;
   border-radius: 4px;

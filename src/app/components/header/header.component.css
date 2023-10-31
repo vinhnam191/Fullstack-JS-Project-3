@@ -28,6 +28,10 @@
   font-weight: bold;
 }
 
+#nav-bar li:hover {
+  text-decoration: underline;
+}
+
 #nav-bar a {
   color: #f2f4ef;
   text-decoration: none;

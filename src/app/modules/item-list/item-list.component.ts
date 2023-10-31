@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Item } from 'src/app/models';
+import { CartItem, Item } from 'src/app/models';
 import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/services/commom.service';
 
@@ -19,6 +19,11 @@ export class ItemListComponent implements OnInit, OnDestroy {
       this.itemList = res;
     });
   }
+
+  getAddedItem = (addedItem: CartItem) => {
+    this.commonService.addItemToCart(addedItem);
+    window.alert(`${addedItem.name} added to cart successfully`);
+  };
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

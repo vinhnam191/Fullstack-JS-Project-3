@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonService } from './services/commom.service';
 import { CommonModule } from '@angular/common';
 import { ItemDetailModule } from './modules/item-detail/item-detail.module';
+import { CartModule } from './modules/cart/cart.module';
+import { ConfirmModule } from './modules/confirm/confirm.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -20,6 +22,8 @@ import { ItemDetailModule } from './modules/item-detail/item-detail.module';
     ItemListModule,
     ItemModule,
     ItemDetailModule,
+    CartModule,
+    ConfirmModule,
   ],
   providers: [CommonService],
   bootstrap: [AppComponent],

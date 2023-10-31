@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CartItem, Item, Orders } from '../models';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ export class CommonService {
   private cart: CartItem[] = [];
   private itemDetail!: Item;
   private orders!: Orders;
+  public cartNumber = new Subject<number>();
 
   constructor(private readonly httpClient: HttpClient) {}
 
@@ -39,6 +41,7 @@ export class CommonService {
     } else {
       this.cart.push(addedCartItem);
     }
+    this.cartNumber.next(this.cart.length);
   };
 
   getCartItem = () => {
@@ -51,6 +54,7 @@ export class CommonService {
         this.cart.splice(index, 1);
       }
     });
+    this.cartNumber.next(this.cart.length);
   };
 
   resetCart = () => {

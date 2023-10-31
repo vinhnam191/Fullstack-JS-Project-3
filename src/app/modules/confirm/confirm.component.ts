@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Orders } from 'src/app/models';
-import { CommonService } from 'src/app/services/commom.service';
+import { CommonService } from 'src/app/services/common.service';
 import { NAVIGATES } from 'src/app/utils/constants';
 
 @Component({

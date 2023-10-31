@@ -6,7 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ItemModule } from './modules/item/item.module';
 import { ItemListModule } from './modules/item-list/item-list.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonService } from './services/commom.service';
+import { CommonService } from './services/common.service';
 import { CommonModule } from '@angular/common';
 import { ItemDetailModule } from './modules/item-detail/item-detail.module';
 import { CartModule } from './modules/cart/cart.module';

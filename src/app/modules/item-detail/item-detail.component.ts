@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/models';
-import { CommonService } from 'src/app/services/commom.service';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-item-detail',

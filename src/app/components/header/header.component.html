@@ -5,8 +5,9 @@
       <li><a routerLink="">Product List</a></li>
       <li id="navbar-separate">|</li>
       <li>
-        <a routerLink="cart">Cart</a>
+        <a routerLink="cart">Cart </a>
       </li>
+      <p *ngIf="cartItemNumber" class="item-number">{{ cartItemNumber }}</p>
     </ul>
   </div>
 </div>

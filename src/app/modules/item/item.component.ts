@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartItem, Item } from 'src/app/models';
-import { CommonService } from 'src/app/services/commom.service';
+import { CommonService } from 'src/app/services/common.service';
 import { NAVIGATES } from 'src/app/utils/constants';
 
 @Component({

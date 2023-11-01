@@ -24,8 +24,8 @@
   <div *ngIf="!cartItems.length">
     Cart is empty. Please add any product to the cart :D
   </div>
-  <form [formGroup]="cartForm">
-    <div *ngIf="cartItems.length" class="customer-info">
+  <div *ngIf="cartItems.length" class="customer-info">
+    <form [formGroup]="cartForm">
       <p>Full Name</p>
       <input
         formControlName="fullName"
@@ -62,28 +62,26 @@
       >
         Please enter at least 6 characters long
       </div>
-      <p>Credit card number</p>
-      <input
-        formControlName="creditCart"
-        type="text"
-        placeholder="(16-digits number)"
-      />
-      <div
-        class="input-error"
-        *ngIf="creditCart?.errors?.['required'] && isClickSubmit"
-      >
-        Credit Cart is required
-      </div>
-      <div
-        class="input-error"
-        *ngIf="creditCart?.errors?.['minlength'] && isClickSubmit"
-      >
-        Please enter 16 digits number
-      </div>
-      <p class="caution">
-        We'll never share your payment details with anyone else
-      </p>
-      <button (click)="onSubmit($event)" class="button-submit">Submit</button>
+    </form>
+    <p>Credit card number</p>
+    <input
+      [ngModel]="creditCartNumber"
+      (ngModelChange)="onCreditCartChange($event)"
+      type="text"
+      placeholder="(16-digits number)"
+    />
+    <div
+      class="input-error"
+      *ngIf="
+        (creditCartNumber.length < 16 || creditCartNumber.length > 16) &&
+        isClickSubmit
+      "
+    >
+      Please enter 16 digits number
     </div>
-  </form>
+    <p class="caution">
+      We'll never share your payment details with anyone else
+    </p>
+    <button (click)="onSubmit($event)" class="button-submit">Submit</button>
+  </div>
 </section>

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartItem } from 'src/app/models';
+import { CartService } from 'src/app/services/cart.service';
 import { CommonService } from 'src/app/services/common.service';
 import { NAVIGATES } from 'src/app/utils/constants';
 
@@ -15,6 +16,7 @@ export class CartComponent implements OnInit {
   storeSubscription!: Subscription;
   cartItems: CartItem[] = [];
   total: number = 0;
+  creditCartNumber: string = '';
 
   cartForm = new FormGroup({
     fullName: new FormControl('', [
@@ -24,10 +26,6 @@ export class CartComponent implements OnInit {
     address: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-    ]),
-    creditCart: new FormControl('', [
-      Validators.required,
-      Validators.minLength(16),
     ]),
   });
 
@@ -47,21 +45,28 @@ export class CartComponent implements OnInit {
 
   constructor(
     private readonly commonService: CommonService,
+    private readonly cartService: CartService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.cartItems = this.commonService.getCartItem();
+    this.cartItems = this.cartService.getCartItem();
     this.getTotalPayment();
   }
 
   onQuantityChange(event: any, itemId: number) {
+    console.log(event, itemId);
+
     this.cartItems.forEach((item, index) => {
       if (item.id === itemId) {
         this.cartItems[index].quantity = event.target.value;
       }
     });
     this.getTotalPayment();
+  }
+
+  onCreditCartChange(creditNumber: string) {
+    this.creditCartNumber = creditNumber;
   }
 
   getTotalPayment2(id: number, quantity: number) {
@@ -84,7 +89,7 @@ export class CartComponent implements OnInit {
   }
 
   onRemove(item: CartItem) {
-    this.commonService.removeItemFromCart(item.id);
+    this.cartService.removeItemFromCart(item.id);
     this.getTotalPayment();
     window.alert(`${item.name} successfully removed from cart`);
   }
@@ -97,7 +102,7 @@ export class CartComponent implements OnInit {
         fullName: this.fullName?.value ?? '',
         total: this.total,
       });
-      this.commonService.resetCart();
+      this.cartService.resetCart();
       this.router.navigateByUrl(NAVIGATES.CONFIRM);
     }
   }

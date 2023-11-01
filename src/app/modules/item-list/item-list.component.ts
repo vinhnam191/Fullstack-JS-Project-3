@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartItem, Item } from 'src/app/models';
 import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-item-list',
@@ -12,7 +13,10 @@ export class ItemListComponent implements OnInit, OnDestroy {
   itemList!: Item[];
   subscription!: Subscription;
 
-  constructor(private readonly commonService: CommonService) {}
+  constructor(
+    private readonly commonService: CommonService,
+    private readonly cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.subscription = this.commonService.getItemList().subscribe(res => {
@@ -21,7 +25,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   }
 
   getAddedItem = (addedItem: CartItem) => {
-    this.commonService.addItemToCart(addedItem);
+    this.cartService.addItemToCart(addedItem);
     window.alert(`${addedItem.name} added to cart successfully`);
   };
 

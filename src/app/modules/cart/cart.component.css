@@ -31,7 +31,7 @@
   justify-content: center;
 }
 
-.cart-item-text > input {
+.cart-item-text input {
   padding: 5px 10px;
   font-size: 16px;
   border-radius: 4px;
@@ -51,18 +51,18 @@
   padding: 30px;
 }
 
-.customer-info > p {
+.customer-info p {
   margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
 }
 
-.customer-info > .caution {
+.customer-info .caution {
   font-weight: lighter;
   font-size: 16px;
 }
 
-.customer-info > input {
+.customer-info input {
   padding: 10px 15px;
   font-size: 16px;
   border-radius: 4px;
@@ -70,7 +70,7 @@
   width: 100%;
 }
 
-.customer-info > .button-submit {
+.customer-info .button-submit {
   padding: 10px 15px;
   margin-top: 8px;
   font-size: 20px;
